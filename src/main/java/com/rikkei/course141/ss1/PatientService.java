@@ -1,12 +1,11 @@
 package com.rikkei.course141.ss1;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import lombok.RequiredArgsConstructor;
 @Service
+@RequiredArgsConstructor
 public class PatientService {
-    @Autowired
-    private PatientRepository patientRepository;
+    private final PatientRepository patientRepository;
 
     public Patient create(PatientCreateDTO dto) {
         Patient p = Patient.builder()

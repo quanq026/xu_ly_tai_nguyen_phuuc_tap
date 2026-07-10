@@ -1,16 +1,14 @@
 package com.rikkei.course141.ss1;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+import lombok.RequiredArgsConstructor;
 @Service
+@RequiredArgsConstructor
 public class DoctorService {
-    @Autowired
-    private DoctorRepository doctorRepository;
-    @Autowired
-    private DepartmentRepository departmentRepository;
+    private final DoctorRepository doctorRepository;
+    private final DepartmentRepository departmentRepository;
 
     public Doctor create(DoctorCreateDTO dto) {
         departmentRepository.findById(dto.getDepartmentId())
