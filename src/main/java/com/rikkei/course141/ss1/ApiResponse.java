@@ -8,6 +8,8 @@ import lombok.*;
 @Builder
 public class ApiResponse<T> {
     private String status;
+    private Boolean success;
+    private String message;
     private int code;
     private T data;
     private Meta meta;
@@ -23,14 +25,14 @@ public class ApiResponse<T> {
     }
 
     public static <T> ApiResponse<T> success(T data) {
-        return ApiResponse.<T>builder().status("success").code(200).data(data).build();
+        return ApiResponse.<T>builder().status("success").success(true).message("Success").code(200).data(data).build();
     }
 
     public static <T> ApiResponse<T> success(T data, Meta meta) {
-        return ApiResponse.<T>builder().status("success").code(200).data(data).meta(meta).build();
+        return ApiResponse.<T>builder().status("success").success(true).message("Success").code(200).data(data).meta(meta).build();
     }
 
     public static <T> ApiResponse<T> error(int code, String message) {
-        return ApiResponse.<T>builder().status("error").code(code).data((T) message).build();
+        return ApiResponse.<T>builder().status("error").success(false).message(message).code(code).data(null).build();
     }
 }
