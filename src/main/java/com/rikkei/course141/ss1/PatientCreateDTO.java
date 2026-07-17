@@ -1,5 +1,7 @@
 package com.rikkei.course141.ss1;
 
+import jakarta.validation.constraints.NotBlank;
+
 import jakarta.validation.constraints.*;
 import lombok.Data;
 
